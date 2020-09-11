@@ -1,0 +1,31 @@
+import java.util.*;
+
+import java.io.*;
+public class PrimeFactorization {
+    public static List<Integer> primeFactors(int numbers) {
+        int n = numbers;
+        List<Integer> factors = new ArrayList<Integer>();
+        for (int i = 2; i <= n / i; i++) {
+            while (n % i == 0) {
+                factors.add(i);
+                n /= i;
+            }
+        }
+        if (n > 1) {
+            factors.add(n);
+        }
+        return factors;
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int input = Integer.parseInt(br.readLine());
+        for (int i = 0; i<input; i++){
+        int primefactornumber = Integer.parseInt(br.readLine());
+        for (Integer integer : primeFactors(primefactornumber)) {
+            System.out.print(integer + " ");
+        }
+        System.out.println();
+        }
+    }
+}
